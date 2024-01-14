@@ -5,7 +5,7 @@ d3.csv('./Datasets/Utils/unique_ingredients.csv', (data) => {
     for (let i = 0; i < data.length; i++) {
         foods.push(data[i]['Unique Ingredients']);
     }
-})
+});
 
 // Selected items
 const selectedItems = [];

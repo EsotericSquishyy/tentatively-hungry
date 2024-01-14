@@ -7,9 +7,6 @@ d3.csv('./Datasets/Utils/recipes.csv', (data) => {
 
     // Read the CSV file
 
-    // const rows = data.split('\n');
-    // const headers = rows[0].split(',');
-
     for (let i = 0; i < data.length; i++) {
         row = data[i];
         // const row = rows[i].split(',');
