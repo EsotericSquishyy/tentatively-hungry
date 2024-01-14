@@ -3,13 +3,10 @@ const Rec_Ing = {};
 const ingMap = {}; // Maps ingredients to a list of recipes it is included in
 const totMap = {}; // Maps recipes to the number of ingredients required
 
-d3.csv('./Datasets/genRecipes.csv', (data) => {
+d3.csv('./Datasets/recipes.csv', (data) => {
     // console.log(data);
 
     // Read the CSV file
-
-    // const rows = data.split('\n');
-    // const headers = rows[0].split(',');
 
     for (let i = 0; i < data.length; i++) {
         let row = data[i];
@@ -21,7 +18,7 @@ d3.csv('./Datasets/genRecipes.csv', (data) => {
         const recipe = row['Recipe']
 
         for (const item of row['Ingredients'].split(',')) {
-            const ingredient = item.replace('[', '').replace(']', '').replace('\'', '').trim().replace('"', '');
+            const ingredient = item.replace('[', '').replace(']', '').replaceAll('\'', '').trim().replace('"', '');
 
             if(!Rec_Ing[recipe]){
                 Rec_Ing[recipe] = []

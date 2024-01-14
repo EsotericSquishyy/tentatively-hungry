@@ -27,8 +27,6 @@ function findRecipes(items, rating, ingredientMap, countMap){
         Rat_Rec[rating].push(recipe);
     }
 
-
-
     const keys = Object.keys(Rat_Rec).sort((a, b) => b - a);
 
     /*for (const key of keys) {
