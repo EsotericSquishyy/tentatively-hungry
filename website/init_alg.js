@@ -18,7 +18,7 @@ d3.csv('./Datasets/Utils/recipes.csv', (data) => {
         const recipe = row['Recipe']
 
         for (const item of row['Ingredients'].split(',')) {
-            const ingredient = item.replace('[', '').replace(']', '').replace('\'', '').trim().replace('"', '');
+            const ingredient = item.replace('[', '').replace(']', '').replaceAll('\'', '').trim().replace('"', '');
 
             if(!Rec_Ing[recipe]){
                 Rec_Ing[recipe] = []
