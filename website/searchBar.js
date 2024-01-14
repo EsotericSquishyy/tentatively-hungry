@@ -123,9 +123,67 @@ function generateRecipes() {
       // Set background color based on compatibility-value range
       const hue = (rating * 120) % 360;
       button.style.backgroundColor = `hsl(${hue}, 70%, 50%)`
+      console.log(recipe)
+      button.addEventListener('click', function() {myRecipe = button.innerText; onPressRecipeButton(myRecipe);});
       container.appendChild(button);
+    } 
+  }
+}
+
+function onPressRecipeButton(recipe) {
+  var myIngredients = []
+  var missingIngredients = []
+  for(ingredient of Rec_Ing[recipe]) {
+    var found = false
+    for(my_ingredient of selectedItems) {
+      if(ingredient == my_ingredient) {
+        myIngredients.push(ingredient)
+        found = true
+      }
+    }
+    if(!found) {
+      missingIngredients.push(ingredient)
     }
   }
+  
+  var recipeContainer = document.getElementById('recipe-container');
+  recipeContainer.innerHTML = '';
+
+  var recipeBox = document.createElement('div');
+  recipeBox.classList.add('recipe-box');
+
+  var recipeHeading = document.createElement('h2');
+  recipeHeading.textContent = recipe;
+  recipeBox.appendChild(recipeHeading);
+
+  var ul = document.createElement('ul');
+  ul.classList.add('clean-list'); // Add a class to style the ul
+  console.log(myIngredients)
+  // Iterate through the array and create li elements
+  myIngredients.forEach(function (item) {
+    var li = document.createElement('li');
+    li.textContent = item;
+
+    // Append each li to the ul
+    ul.appendChild(li);
+  });
+
+  var mul = document.createElement('ul');
+  mul.classList.add('clean-list', 'mul'); // Add a class to style the ul
+
+  // Iterate through the array and create li elements
+  console.log(missingIngredients)
+  missingIngredients.forEach(function (item) {
+    var li = document.createElement('li');
+    li.textContent = item;
+
+    // Append each li to the ul
+    mul.appendChild(li);
+  });
+
+  recipeBox.appendChild(ul);
+  recipeBox.appendChild(mul);
+  recipeContainer.appendChild(recipeBox);
 }
 
 
