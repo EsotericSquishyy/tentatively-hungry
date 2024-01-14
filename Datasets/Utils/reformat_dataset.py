@@ -65,7 +65,9 @@ mods = [
     'prepared',
     'peeled',
     'finely',
-    'cooked'
+    'cooked',
+    'or',
+    'fresh'
 ]
 
 occurences = defaultdict(lambda: 0)
@@ -108,7 +110,7 @@ def clean_ingredient(ingredient: str) -> Ingredient:
 
     for ingredient_mod in mods:
         if ingredient_mod in food_item:
-            food_item = food_item[:food_item.find(ingredient_mod)]
+            food_item = food_item.replace(ingredient_mod, '')
 
     if '(' in food_item:
         food_item = food_item[:food_item.find(' (')]
@@ -160,6 +162,8 @@ def main():
 
     # Create a DataFrame from the loaded data
     df = pd.DataFrame.from_dict(data, orient='index')
+
+    df.drop_duplicates('title', inplace=True)
 
     # Assign ascending sequence numbers to the "ID" column starting at 1
     df.insert(0, "ID", range(1, len(df) + 1))
@@ -213,9 +217,16 @@ def main():
     print(f"Wrote to {output_file_path}")
 
 
-test = ['% milk']
-for item in test:
-    print(clean_ingredient(item))
+test = [
+    "3 1/2 pounds fresh peaches - peeled, pitted and chopped ADVERTISEMENT",
+    "1 teaspoon ground ginger ADVERTISEMENT",
+    "1 1/3 cups heavy cream ADVERTISEMENT",
+    "2 tablespoons rum ADVERTISEMENT",
+    "ADVERTISEMENT"
+]
+
+# for item in test:
+#     print(clean_ingredient(item))
 
 if __name__ == '__main__':
     main()
