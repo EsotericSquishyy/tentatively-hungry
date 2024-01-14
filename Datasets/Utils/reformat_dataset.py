@@ -66,7 +66,7 @@ mods = [
     'peeled',
     'finely',
     'cooked',
-    'or',
+    ' or ',
     'fresh'
 ]
 
