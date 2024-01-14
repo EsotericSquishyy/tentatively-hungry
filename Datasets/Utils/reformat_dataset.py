@@ -145,8 +145,8 @@ def clean_ingredient(ingredient: str) -> Ingredient:
     food_item = food_item.replace(' - ', '')
     food_item = re.sub(r'\d+/*\s*', '', food_item).strip()
 
-    if len(food_item) > 20:
-        food_item = ''
+    # if len(food_item) > 30:
+    #     food_item = ''
 
 
     if food_item:
@@ -218,15 +218,15 @@ def main():
 
 
 test = [
-    "3 1/2 pounds fresh peaches - peeled, pitted and chopped ADVERTISEMENT",
-    "1 teaspoon ground ginger ADVERTISEMENT",
-    "1 1/3 cups heavy cream ADVERTISEMENT",
-    "2 tablespoons rum ADVERTISEMENT",
-    "ADVERTISEMENT"
+      "1 (7 ounce) jar marshmallow creme ADVERTISEMENT",
+      "1 (8 ounce) package cream cheese, softened ADVERTISEMENT",
+      "1 orange, zested ADVERTISEMENT",
+      "1 fluid ounce orange liqueur ADVERTISEMENT",
+      "ADVERTISEMENT"
 ]
 
-# for item in test:
-#     print(clean_ingredient(item))
+for item in test:
+    print(clean_ingredient(item))
 
 if __name__ == '__main__':
     main()
