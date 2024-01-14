@@ -25,7 +25,8 @@ for unit in [
     ['can', ''],
     ['container', ''],
     ['quart', 'qt'],
-    ['gallon', 'gal']
+    ['gallon', 'gal'],
+    ['can', '']
 ]:
     units.append(Unit(unit[0], unit[1]))
 
@@ -59,7 +60,12 @@ mods = [
     'small',
     'and',
     'coarsely',
-    'thinly'
+    'thinly',
+    'sifted',
+    'prepared',
+    'peeled',
+    'finely',
+    'cooked'
 ]
 
 occurences = defaultdict(lambda: 0)
@@ -114,6 +120,15 @@ def clean_ingredient(ingredient: str) -> Ingredient:
         if food_item[-2] not in ['s', 'e']:
             food_item = food_item[:-1]
 
+    elif food_item[0] == '%':
+        food_item = food_item[1:]
+
+    elif food_item[-1] == 'm' and food_item[-2] == ' ':
+        food_item = food_item[:-1]
+
+    elif food_item[0] == 'w' and food_item[1] == ' ':
+        food_item = food_item[1:]
+
     if ':' in food_item:
         food_item = ''
 
@@ -121,8 +136,16 @@ def clean_ingredient(ingredient: str) -> Ingredient:
     if m := re.match(r'\d+\s*\d*/*\d*', cleaned):
         quantity = m.group(0).rstrip()
 
-    food_item.replace('-', '').replace('1/', '')
-    food_item = re.sub(r'\d+\s+', '', food_item).strip()
+    if food_item in ['package', 'half']:
+        food_item = ''
+
+
+    food_item = food_item.replace(' - ', '')
+    food_item = re.sub(r'\d+/*\s*', '', food_item).strip()
+
+    if len(food_item) > 20:
+        food_item = ''
+
 
     if food_item:
         occurences[food_item] += 1
@@ -156,10 +179,12 @@ def main():
                 if ingred := clean_ingredient(item).food_item:
                     ingredients.append(ingred)
 
-        if len(ingredients) < 2:
+        if len(ingredients) < 3:
             df.drop(i, inplace=True)
 
         df.at[i, 'Ingredients'] = ingredients
+
+    df.dropna(inplace=True)
 
     for i, instructions in df[['Instructions']].iterrows():
         df.at[i, 'Instructions'] = instructions.iloc[0].replace('\n', ' ')
@@ -172,7 +197,7 @@ def main():
 
     for i, ingredient_list in df[['Ingredients']].iterrows():
         if i % 3000 == 0:
-            print(f'{100 * round(i / df.size, 4)}%')
+            print(f'{round(100 * i / df.size, 4)}%')
 
         for item in ingredient_list.iloc[0]:
             if occurences[item] < 50:
@@ -187,6 +212,10 @@ def main():
 
     print(f"Wrote to {output_file_path}")
 
+
+test = ['% milk']
+for item in test:
+    print(clean_ingredient(item))
 
 if __name__ == '__main__':
     main()

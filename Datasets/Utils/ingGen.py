@@ -3,7 +3,7 @@ import csv
 
 
 # '../genRecipes.csv'  #
-testfile = 'output_dataframe.csv'
+testfile = 'recipes.csv'
 
 
 # Read the file and initialize an empty set for ingredients
