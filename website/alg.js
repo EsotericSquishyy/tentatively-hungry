@@ -16,8 +16,6 @@ function findRecipes(items, rating, ingredientMap, countMap){
         }
     }
 
-
-
     const Rat_Rec = {}; // Maps the rating of the recipe to recipes
 
     for (const recipe in Rec_Num) {
