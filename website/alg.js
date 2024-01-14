@@ -1,36 +1,8 @@
-const fs = require('fs');
-
 const user_ing = ['Banana']
 const user_rat = 0.5
 
 const Ing_Rec = {}; // Maps ingredients to a list of recipes it is included in
 const Rec_Tot = {}; // Maps recipes to the number of ingredients required
-
-
-
-// Read the CSV file
-const data = fs.readFileSync('../Datasets/genRecipes.csv', 'utf-8');
-const rows = data.split('\n');
-const headers = rows[0].split(',');
-
-for (let i = 1; i < rows.length; i++) {
-    const row = rows[i].split(',');
-    let count = 0;
-
-    for (const item of row.slice(headers.indexOf('Recipe'))) {
-        const ingredient = item.replace('[', '').replace(']', '').replace('\'', '').trim().replace('"', '');
-
-        if (!Ing_Rec[ingredient]) {
-            Ing_Rec[ingredient] = [];
-        }
-        Ing_Rec[ingredient].push(row[headers.indexOf('Recipe')]);
-        count++;
-    }
-    Rec_Tot[row[headers.indexOf('Recipe')]] = count;
-}
-
-
-
 const Rec_Num = {}; // Maps recipes to the number of ingredients the user has
 
 for (const ingredient of user_ing) {
