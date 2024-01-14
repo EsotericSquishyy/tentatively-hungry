@@ -75,7 +75,7 @@ def clean_ingredient(ingredient: str) -> Ingredient:
 
 
 # Read data from the JSON file
-file_path = "../Datasets/recipes_raw_nosource_ar.json"
+file_path = "../recipes_raw_nosource_ar.json"
 with open(file_path, 'r') as file:
     data = json.load(file)
 
@@ -103,9 +103,12 @@ for i, instructions in df[['instructions']].iterrows():
     df.at[i, 'instructions'] = instructions.iloc[0].replace('\n', ' ')
 
 # Export the DataFrame to a new CSV file
-output_file_path = "output_dataframe.csv"
-print(f"Wrote to {output_file_path}")
+output_file_path = "recipes.csv"
 
 # Assign ascending sequence numbers to the "ID" column starting at 1
 df.insert(0, "ID", range(1, len(df) + 1))
+df = df.rename(columns={"ingredients": "Ingredients", "title": "Recipe", "instructions": "Instructions"})
+
 df.to_csv(output_file_path, index=False)
+
+print(f"Wrote to {output_file_path}")
