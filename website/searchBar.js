@@ -101,7 +101,6 @@ function updateMealTitle() {
 }
 
 
-
 let compatibilityValue = 50
 // Function to update the compatibility value
 function updateCompatibility() {
@@ -109,7 +108,7 @@ function updateCompatibility() {
   document.getElementById('compatibility-value').textContent = compatibilityValue;
 }
 
-// Function to generate recipes as neat rectangle buttons
+// Function to generate recipes as differently colored rectangle buttons
 function generateRecipes() {
   // Implement your recipe generation logic here
   var myArray = findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
@@ -120,10 +119,26 @@ function generateRecipes() {
     let button = document.createElement('button');
     button.classList.add('recipe-button');
     button.innerText = myArray[i];
+
+    // Set background color based on compatibility-value range
+    button.style.setProperty('--button-color', getColorForCompatibility(compatibilityValue));
+
     container.appendChild(button);
   }
 }
 
+// Function to get color based on compatibility-value range
+function getColorForCompatibility(value) {
+  if (value >= 0 && value < 0.25) {
+    return 'var(--green-color)';
+  } else if (value >= 0.25 && value < 0.50) {
+    return 'var(--light-green-color)';
+  } else if (value >= 0.50 && value < 0.75) {
+    return 'var(--yellow-color)';
+  } else {
+    return 'var(--red-color)';
+  }
+}
 
 // Call the function to set the initial meal title
 updateMealTitle();
