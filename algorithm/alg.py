@@ -1,26 +1,27 @@
 import csv
 
-Ing_Rec = {} # Maps ingredients to list of recipes it is included in
-Rec_Tot = {} # Maps recipes to the number of ingredients required
+Ing_Rec = {}  # Maps ingredients to list of recipes it is included in
+Rec_Tot = {}  # Maps recipes to the number of ingredients required
 
 # Read the CSV file
-with open('../Datasets/Testing/genRecipes.csv', newline='', encoding='utf-8') as csvfile:
+with open('../Datasets/genRecipes.csv', newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile)
 
     # Print only the Recipe names
     for row in reader:
         count = 0
-        for item in row['ingredients'].split(', '):
+        for item in row['Ingredients'].split(', '):
             ingredient = item.replace('[', '').replace(']', '').replace('\'', '')
-           
+
             if ingredient not in Ing_Rec:
                 Ing_Rec[ingredient] = list()
-            Ing_Rec[ingredient].append(row['title'])
+            Ing_Rec[ingredient].append(row['Recipe'])
             count += 1
-        Rec_Tot[row['title']] = count
+        Rec_Tot[row['Recipe']] = count
 
 
-user_ing = ['Pasta', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Salt', 'Pepper', 'Cabbage Leaves'] # Testing list
+user_ing = ['Banana']
+# user_ing = ['Pasta', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Salt', 'Pepper', 'Cabbage Leaves'] # Testing list
 Rec_Num = {} # Maps recipes to the number of ingredients the user has
 
 for ingredient in user_ing:
