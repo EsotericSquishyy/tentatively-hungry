@@ -176,17 +176,17 @@ def main():
     df = df.reset_index().rename(columns={"index": "ID"}).drop(columns=["ID"])
 
     for i, ingredient_list in df[['Ingredients']].iterrows():
-        ingredients = []
+        ingredients = set()
         for item in ingredient_list.iloc[0]:
             if item != 'ADVERTISEMENT':
                 # print(clean_ingredient(item).food_item)
                 if ingred := clean_ingredient(item).food_item:
-                    ingredients.append(ingred)
+                    ingredients.add(ingred)
 
         if len(ingredients) < 3:
             df.drop(i, inplace=True)
 
-        df.at[i, 'Ingredients'] = ingredients
+        df.at[i, 'Ingredients'] = list(ingredients)
 
     df.dropna(inplace=True)
 
