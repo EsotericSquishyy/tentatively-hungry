@@ -100,9 +100,10 @@ function updateMealTitle() {
   }
 }
 
+let compatibilityValue = 50
 // Function to update the compatibility value
 function updateCompatibility() {
-  const compatibilityValue = document.getElementById('meal-compatibility').value;
+  compatibilityValue = document.getElementById('meal-compatibility').value;
   document.getElementById('compatibility-value').textContent = compatibilityValue;
 }
 
@@ -110,6 +111,7 @@ function updateCompatibility() {
 function generateRecipes() {
   // Implement your recipe generation logic here
   alert('Recipes generated!');
+    findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
 }
 
 // Call the function to set the initial meal title
