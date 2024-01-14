@@ -206,7 +206,7 @@ def main():
 
 
     # Export the DataFrame to a new CSV file
-    output_file_path = "recipes.csv"
+    output_file_path = "../recipes.csv"
 
     df.to_csv(output_file_path, index=False)
 

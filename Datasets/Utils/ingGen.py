@@ -3,7 +3,7 @@ import csv
 
 
 # '../genRecipes.csv'  #
-testfile = 'recipes.csv'
+testfile = '../recipes.csv'
 
 
 # Read the file and initialize an empty set for ingredients
@@ -25,7 +25,7 @@ with open(testfile, 'r') as file:
             ingredient_set.update(ingredients)
 
 # Write unique ingredients to a new CSV file
-with open('unique_ingredients.csv', 'w', newline='') as output_file:
+with open('../unique_ingredients.csv', 'w', newline='') as output_file:
     csv_writer = csv.writer(output_file)
 
     # Write header
