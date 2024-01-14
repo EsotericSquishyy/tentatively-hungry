@@ -110,8 +110,13 @@ function updateCompatibility() {
 // Function to generate recipes
 function generateRecipes() {
   // Implement your recipe generation logic here
-  alert('Recipes generated!');
-    findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
+  var myArray = findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
+  let list = document.getElementById("recipeView");
+  for(i = 0; i < myArray.length; ++i) {
+    let li = document.createElement('li');
+    li.innerText = myArray[i];
+    list.appendChild(li);
+  }
 }
 
 // Call the function to set the initial meal title
