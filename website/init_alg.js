@@ -6,22 +6,29 @@ d3.csv('../Datasets/genRecipes.csv', (data) => {
 
     // Read the CSV file
 
-    const rows = data.split('\n');
-    const headers = rows[0].split(',');
+    // const rows = data.split('\n');
+    // const headers = rows[0].split(',');
 
-    for (let i = 1; i < rows.length; i++) {
-        const row = rows[i].split(',');
+    for (let i = 0; i < data.length; i++) {
+        row = data[i];
+        // const row = rows[i].split(',');
         let count = 0;
+        if (!row['Ingredients']) {
+            continue;
+        }
 
-        for (const item of row.slice(headers.indexOf('Recipe'))) {
+        for (const item of row['Ingredients'].split(',')) {
             const ingredient = item.replace('[', '').replace(']', '').replace('\'', '').trim().replace('"', '');
 
             if (!ingMap[ingredient]) {
                 ingMap[ingredient] = [];
             }
-            ingMap[ingredient].push(row[headers.indexOf('Recipe')]);
+            ingMap[ingredient].push(row['Recipe']);
             count++;
         }
-        totMap[row[headers.indexOf('Recipe')]] = count;
+        totMap[row['Recipe']] = count;
     }
+
+    console.log(totMap);
+    console.log(ingMap)
 });
