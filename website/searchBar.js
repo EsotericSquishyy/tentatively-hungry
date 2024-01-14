@@ -6,6 +6,43 @@ const foods = [
 // Selected items
 const selectedItems = [];
 
+
+d3.csv('../Datasets/genRecipes.csv', (data) => {
+    console.log(data);
+
+    const ingMap = {}; // Maps ingredients to a list of recipes it is included in
+    const totMap = {}; // Maps recipes to the number of ingredients required
+
+    // Read the CSV file
+
+    // const rows = data.split('\n');
+    // const headers = rows[0].split(',');
+
+    for (let i = 0; i < data.length; i++) {
+        row = data[i];
+        // const row = rows[i].split(',');
+        let count = 0;
+        if (!row['Ingredients']) {
+            continue;
+        }
+
+        for (const item of row['Ingredients'].split(',')) {
+            const ingredient = item.replace('[', '').replace(']', '').replace('\'', '').trim().replace('"', '');
+
+            if (!ingMap[ingredient]) {
+                ingMap[ingredient] = [];
+            }
+            ingMap[ingredient].push(row['Recipe']);
+            count++;
+        }
+        totMap[row['Recipe']] = count;
+    }
+
+    console.log(totMap);
+    console.log(ingMap)
+});
+
+
 // Function to filter and display matching foods
 function filterFoods() {
   const searchBox = document.getElementById('search-box');
@@ -100,9 +137,10 @@ function updateMealTitle() {
   }
 }
 
+let compatibilityValue = 50
 // Function to update the compatibility value
 function updateCompatibility() {
-  const compatibilityValue = document.getElementById('meal-compatibility').value;
+  compatibilityValue = document.getElementById('meal-compatibility').value;
   document.getElementById('compatibility-value').textContent = compatibilityValue;
 }
 
@@ -110,6 +148,7 @@ function updateCompatibility() {
 function generateRecipes() {
   // Implement your recipe generation logic here
   alert('Recipes generated!');
+    findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
 }
 
 // Call the function to set the initial meal title

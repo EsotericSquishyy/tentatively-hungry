@@ -1,8 +1,9 @@
-d3.csv('../Datasets/genRecipes.csv', (data) => {
-    console.log(data);
 
-    const ingMap = {}; // Maps ingredients to a list of recipes it is included in
-    const totMap = {}; // Maps recipes to the number of ingredients required
+const ingMap = {}; // Maps ingredients to a list of recipes it is included in
+const totMap = {}; // Maps recipes to the number of ingredients required
+
+d3.csv('../Datasets/genRecipes.csv', (data) => {
+    // console.log(data);
 
     // Read the CSV file
 
@@ -29,6 +30,6 @@ d3.csv('../Datasets/genRecipes.csv', (data) => {
         totMap[row['Recipe']] = count;
     }
 
-    console.log(totMap);
-    console.log(ingMap)
+    // console.log(ingMap)
+    // console.log(totMap);
 });
