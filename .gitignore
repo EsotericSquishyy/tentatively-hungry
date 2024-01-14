@@ -1,4 +1,6 @@
-*.csv
-*.json
+# .csv
+# *.json
 LICENSE
 venv/*
+Datasets/recipes_raw_nosource_epi.json
+Datasets/recipes_raw_nosource_fn.json
