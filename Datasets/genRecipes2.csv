@@ -49,7 +49,7 @@ Recipe,Ingredients
 'Thai Coconut Chicken Soup (Tom Kha Gai)',"['Chicken Broth', 'Chicken Breast', 'Coconut Milk', 'Lemongrass', 'Galangal or Ginger', 'Kaffir Lime Leaves', 'Fish Sauce', 'Lime', 'Mushrooms', 'Chilies', 'Cilantro']"
 'Sweet Potato Soup',"['Sweet Potatoes', 'Onion', 'Carrots', 'Celery', 'Chicken Broth', 'Coconut Milk', 'Ginger', 'Curry Powder', 'Cinnamon', 'Nutmeg', 'Salt', 'Black Pepper']"
 'Shrimp and Corn Chowder',"['Shrimp', 'Corn', 'Potatoes', 'Bacon', 'Onion', 'Celery', 'Chicken Broth', 'Milk', 'Flour', 'Butter', 'Thyme', 'Salt', 'Black Pepper']"
-'Moroccan Lentil Soup',"['Lentils', 'Carrots', 'Celery', 'Onion', 'Garlic', 'Tomatoes', 'Vegetable Broth', 'Cumin', 'Coriander', 'Cinnamon', 'Turmeric', 'Paprika', 'Cayenne Pepper', 'O
+'Moroccan Lentil Soup',"['Lentils', 'Carrots', 'Celery', 'Onion', 'Garlic', 'Tomatoes', 'Vegetable Broth', 'Cumin', 'Coriander', 'Cinnamon', 'Turmeric', 'Paprika', 'Cayenne Pepper']"
 'Hamburger with Fries',"['Ground Beef', 'Hamburger Buns', 'Lettuce', 'Tomato', 'Onion', 'Pickles', 'Cheese', 'Ketchup', 'Mustard', 'Potatoes', 'Salt', 'Oil']"
 'Macaroni and Cheese',"['Elbow Macaroni', 'Cheddar Cheese', 'Butter', 'Flour', 'Milk', 'Salt', 'Black Pepper']"
 'Fried Chicken',"['Chicken Pieces', 'Buttermilk', 'Flour', 'Salt', 'Black Pepper', 'Paprika', 'Garlic Powder', 'Oil']"
@@ -59,7 +59,6 @@ Recipe,Ingredients
 'Chicken Pot Pie',"['Chicken Breast', 'Frozen Mixed Vegetables', 'Flour', 'Butter', 'Chicken Broth', 'Milk', 'Salt', 'Black Pepper', 'Pie Crust']"
 'Meatloaf with Mashed Potatoes',"['Ground Beef', 'Breadcrumbs', 'Egg', 'Ketchup', 'Onion', 'Milk', 'Potatoes', 'Butter', 'Milk', 'Salt', 'Black Pepper']"
 'American-style Pancakes',"['All-Purpose Flour', 'Milk', 'Egg', 'Baking Powder', 'Sugar', 'Salt', 'Butter', 'Maple Syrup']"
-'Clam Chowder',"['Canned Clams', 'Potatoes', 'Onion', 'Bacon', 'Butter', 'Flour', 'Milk', 'Salt', 'Black Pepper']"
 'Classic Caesar Salad',"['Romaine Lettuce', 'Croutons', 'Parmesan Cheese', 'Caesar Dressing']"
 'Chicken and Dumplings',"['Chicken Thighs', 'Flour', 'Baking Powder', 'Milk', 'Butter', 'Carrots', 'Celery', 'Chicken Broth', 'Salt', 'Black Pepper']"
 'Buffalo Chicken Wings',"['Chicken Wings', 'Buffalo Sauce', 'Butter', 'Celery Sticks', 'Blue Cheese Dressing']"
@@ -133,7 +132,6 @@ Recipe,Ingredients
 'Chicken BLT Sandwich',"['Grilled Chicken Breast', 'Bacon', 'Lettuce', 'Tomato', 'Mayonnaise']"
 'Chimichurri Chicken Skewers',"['Chicken Skewers', 'Chimichurri Sauce', 'Red Onion', 'Bell Peppers']"
 'Chicken Pesto Panini',"['Grilled Chicken', 'Pesto Sauce', 'Tomato', 'Mozzarella Cheese', 'Ciabatta Bread']"
-'Cucumber Avocado Rolls',"['Cucumber', 'Avocado', 'Cream Cheese', 'Smoked Salmon']"
 'Honey Mustard Chicken Salad',"['Grilled Chicken Breast', 'Mixed Greens', 'Cherry Tomatoes', 'Honey Mustard Dressing']"
 'Pasta Primavera',"['Fettuccine Pasta', 'Mixed Vegetables (Peas, Carrots, Broccoli)', 'Alfredo Sauce']"
 'Tuna Salad Sandwich',"['Canned Tuna', 'Mayonnaise', 'Celery', 'Bread']"
@@ -184,7 +182,7 @@ Recipe,Ingredients
 'Cheddar Broccoli Soup',"['Broccoli', 'Cheddar Cheese', 'Chicken Broth']"
 'Blueberry Pancakes',"['Pancake Mix', 'Blueberries', 'Maple Syrup']"
 'Pesto Chicken Panini',"['Grilled Chicken', 'Pesto Sauce', 'Ciabatta Bread']"
-'Asian Cucumber Salad',"['Cucumber', 'Sesame Oil', 'Soy Sauce', 'Rice Vinegar']"  
+'Asian Cucumber Salad',"['Cucumber', 'Sesame Oil', 'Soy Sauce', 'Rice Vinegar']"
 'Chicken Teriyaki Stir-Fry',"['Chicken Breast', 'Teriyaki Sauce', 'Soy Sauce', 'Garlic', 'Ginger', 'Broccoli', 'Carrots', 'Bell Peppers', 'Snap Peas', 'Green Onions', 'Sesame Seeds', 'Cooked Rice']"
 'Vegetable Spring Rolls',"['Rice Paper Wrappers', 'Rice Vermicelli Noodles', 'Shredded Carrots', 'Cucumber', 'Lettuce', 'Mint Leaves', 'Cilantro', 'Soy Sauce', 'Hoisin Sauce', 'Peanut Sauce']"
 'Shrimp Pad Thai',"['Rice Noodles', 'Shrimp', 'Tofu', 'Bean Sprouts', 'Green Onions', 'Peanuts', 'Egg', 'Lime', 'Pad Thai Sauce']"
@@ -230,4 +228,3 @@ Recipe,Ingredients
 'Tuna Salad Sandwich',"['Canned Tuna', 'Mayonnaise', 'Celery', 'Red Onion', 'Dill Pickle Relish', 'Lettuce', 'Whole Wheat Bread']"
 'Buffalo Chicken Wrap',"['Grilled Chicken Strips', 'Buffalo Sauce', 'Blue Cheese Dressing', 'Lettuce', 'Tomato', 'Flour Tortilla']"
 'Turkey and Cranberry Panini',"['Turkey Slices', 'Cranberry Sauce', 'Cream Cheese', 'Multigrain Bread']"
-
