@@ -9,14 +9,21 @@
 
 <body>
 
-<div id="meal-title"></div>
-<label for="food-search">Search for food:</label>
-<div id="dropdown">
-  <input type="text" id="search-box" oninput="filterFoods()" onkeypress="handleKeyPress(event)" placeholder="Type to search..." onclick="toggleDropdown()">
-  <div class="dropdown-content" id="dropdown-content"></div>
-</div>
-<div id="result">Available items:</div>
-<button id="generate-recipes-button" onclick="generateRecipes()">Generate Recipes!</button>
+
+  <div id="meal-title"></div>
+  <label for="food-search">Search for food:</label>
+  <div id="dropdown">
+    <input type="text" id="search-box" oninput="filterFoods()" onkeypress="handleKeyPress(event)" placeholder="Type to search..." onclick="toggleDropdown()">
+    <div class="dropdown-content" id="dropdown-content"></div>
+  </div>
+  <div id="result">Available items:</div>
+
+  <div id="compatibility-bar">
+    <label for="meal-compatibility">Meal Compatibility:</label>
+    <input type="range" id="meal-compatibility" min="0" max="100" value="50" oninput="updateCompatibility()">
+    <span id="compatibility-value">50</span>
+  </div>
+  <button id="generate-recipes-button" onclick="generateRecipes()">Generate Recipes!</button>
 
 <script src="website/searchBar.js"></script>
 
