@@ -17,7 +17,7 @@ function filterFoods() {
   const searchTerm = searchBox.value.toLowerCase();
 
   // Filter foods based on search term and not in selectedItems
-  const filteredFoods = foods.filter(food => food.toLowerCase().startsWith(searchTerm) && !selectedItems.includes(food));
+  const filteredFoods = foods.filter(food => food.toLowerCase().includes(searchTerm) && !selectedItems.includes(food));
 
   // Display the results in the dropdown
   dropdownContent.innerHTML = filteredFoods.map(food => `<div onclick="selectItem('${food}')">${food}</div>`).join('');
@@ -123,7 +123,7 @@ function generateRecipes() {
       let button = document.createElement('button');
       button.classList.add('recipe-button');
       button.innerText = recipe;
-      
+
       // Set background color based on compatibility-value range
       const hue = (rating * 120) % 360;
       button.style.backgroundColor = `hsl(${hue}, 70%, 50%)`
