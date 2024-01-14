@@ -1,5 +1,6 @@
 # .csv
 # *.json
+.idea
 LICENSE
 venv/*
 Datasets/recipes_raw_nosource_epi.json
