@@ -111,19 +111,20 @@ function updateCompatibility() {
 // Function to generate recipes as differently colored rectangle buttons
 function generateRecipes() {
   // Implement your recipe generation logic here
-  var myArray = findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
+  var outputRecipes = findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
   let container = document.getElementById("recipeView");
   container.innerHTML = ""; // Clear previous content
 
-  for (let i = 0; i < myArray.length; ++i) {
-    let button = document.createElement('button');
-    button.classList.add('recipe-button');
-    button.innerText = myArray[i];
+  for (rating in outputRecipes) {
+    for(recipe in outputRecipes[rating]) {
+      let button = document.createElement('button');
+      button.classList.add('recipe-button');
+      button.innerText = myArray[i];
 
-    // Set background color based on compatibility-value range
-    button.style.setProperty('--button-color', getColorForCompatibility(compatibilityValue));
-
-    container.appendChild(button);
+      // Set background color based on compatibility-value range
+      button.style.setProperty('--button-color', getColorForCompatibility(rating));
+      container.appendChild(button);
+    }
   }
 }
 
