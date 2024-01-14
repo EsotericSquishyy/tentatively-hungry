@@ -137,6 +137,7 @@ function generateRecipes() {
 function onPressRecipeButton(recipe) {
   var myIngredients = []
   var missingIngredients = []
+  console.log(Rec_Ing[recipe])
   for(ingredient of Rec_Ing[recipe]) {
     var found = false
     for(my_ingredient of selectedItems) {
@@ -162,7 +163,6 @@ function onPressRecipeButton(recipe) {
 
   var ul = document.createElement('ul');
   ul.classList.add('clean-list'); // Add a class to style the ul
-  console.log(myIngredients)
   // Iterate through the array and create li elements
   myIngredients.forEach(function (item) {
     var li = document.createElement('li');
@@ -184,6 +184,8 @@ function onPressRecipeButton(recipe) {
     // Append each li to the ul
     mul.appendChild(li);
   });
+  console.log(myIngredients)
+  console.log(missingIngredients)
 
   recipeBox.appendChild(ul);
   recipeBox.appendChild(mul);

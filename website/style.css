@@ -144,7 +144,6 @@ header {
 
 .recipe-box {
   width: 300px; /* Set a specific width for the recipe box */
-  min-height: 450px; /* Set a minimum height for the recipe box to expand from */
   height: auto; /* Allow the box to expand based on its content */
   margin: 10px auto; /* Center the recipe box horizontally */
   border: 1px solid #000;
