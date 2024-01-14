@@ -45,5 +45,5 @@ function findRecipes(items, rating, ingredientMap, countMap){
     }
 
     console.log(output)
-    return output;
+    return output
 }

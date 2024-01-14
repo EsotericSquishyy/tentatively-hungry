@@ -100,6 +100,8 @@ function updateMealTitle() {
   }
 }
 
+
+
 let compatibilityValue = 50
 // Function to update the compatibility value
 function updateCompatibility() {
@@ -107,17 +109,21 @@ function updateCompatibility() {
   document.getElementById('compatibility-value').textContent = compatibilityValue;
 }
 
-// Function to generate recipes
+// Function to generate recipes as neat rectangle buttons
 function generateRecipes() {
   // Implement your recipe generation logic here
   var myArray = findRecipes(selectedItems, compatibilityValue, ingMap, totMap);
-  let list = document.getElementById("recipeView");
-  for(i = 0; i < myArray.length; ++i) {
-    let li = document.createElement('li');
-    li.innerText = myArray[i];
-    list.appendChild(li);
+  let container = document.getElementById("recipeView");
+  container.innerHTML = ""; // Clear previous content
+
+  for (let i = 0; i < myArray.length; ++i) {
+    let button = document.createElement('button');
+    button.classList.add('recipe-button');
+    button.innerText = myArray[i];
+    container.appendChild(button);
   }
 }
+
 
 // Call the function to set the initial meal title
 updateMealTitle();

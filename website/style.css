@@ -68,6 +68,17 @@ header {
   cursor: pointer;
 }
 
+.recipe-button {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 #generate-recipes-button {
   margin-top: 20px;
   padding: 12px;
