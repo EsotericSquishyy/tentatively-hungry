@@ -15,7 +15,7 @@ d3.csv('./Datasets/genRecipes2.csv', (data) => {
         if (!row['Ingredients']) {
             continue;
         }
-        const recipe = row['Recipe']
+        const recipe = row['Recipe'].replaceAll('\'','').trim()
         console.log(row)
         for (const item of row['Ingredients'].split(',')) {
             const ingredient = item.replace('[', '').replace(']', '').replaceAll('\'', '').trim().replaceAll('"', '');
