@@ -33,14 +33,14 @@ function findRecipes(items, rating, ingredientMap, countMap){
         console.log(key, Rat_Rec[key]);
     }*/
 
-    const output = []
+    const output = {}
     for (const key of keys){
         if (key < user_rat)
             continue
         for (const recipe of Rat_Rec[key]){
-            output.push(recipe)
+            output[key] = Rat_Rec[key]  
         }
     }
 
-    console.log(output)
+    return output
 }

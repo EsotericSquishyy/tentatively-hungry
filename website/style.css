@@ -68,11 +68,35 @@ header {
   cursor: pointer;
 }
 
+/* Add custom properties for button colors */
+:root {
+  --green-color: #4CAF50;
+  --light-green-color: #6ab04c;
+  --yellow-color: #f8b400;
+  --red-color: #d92525;
+}
+
+/* Rest of your existing CSS */
+
+.recipe-button {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background-color: var(--green-color); /* Default color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add more styling as needed */
+
+
 #generate-recipes-button {
   margin-top: 20px;
   padding: 12px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: #64219c;
   color: white;
   border: none;
   border-radius: 5px;
