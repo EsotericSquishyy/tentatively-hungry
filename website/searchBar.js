@@ -129,11 +129,11 @@ function generateRecipes() {
 
 // Function to get color based on compatibility-value range
 function getColorForCompatibility(value) {
-  if (value >= 0 && value < 0.25) {
+  if (value >= 75) {
     return 'var(--green-color)';
-  } else if (value >= 0.25 && value < 0.50) {
+  } else if (value <= 50) {
     return 'var(--light-green-color)';
-  } else if (value >= 0.50 && value < 0.75) {
+  } else if (value <= 25) {
     return 'var(--yellow-color)';
   } else {
     return 'var(--red-color)';
