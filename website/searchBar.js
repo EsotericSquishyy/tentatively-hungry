@@ -1,7 +1,7 @@
 // List of food items
 const foods = []
 
-d3.csv('./Datasets/unique_ingredients2.csv', (data) => {
+d3.csv('./Datasets/unique_ingredients.csv', (data) => {
     for (let i = 0; i < data.length; i++) {
         foods.push(data[i]['Unique Ingredients']);
     }
