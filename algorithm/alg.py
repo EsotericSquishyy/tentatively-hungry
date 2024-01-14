@@ -1,7 +1,7 @@
 import csv
 
-tau = {}
-sigma = {}
+Ing_Rec = {} # Maps ingredients to list of recipes it is included in
+Rec_Tot = {} # Maps recipes to the number of ingredients required
 
 # Read the CSV file
 with open('../Datasets/Testing/genRecipes.csv', newline='', encoding='utf-8') as csvfile:
@@ -13,38 +13,35 @@ with open('../Datasets/Testing/genRecipes.csv', newline='', encoding='utf-8') as
         for item in row['ingredients'].split(', '):
             ingredient = item.replace('[', '').replace(']', '').replace('\'', '')
            
-            if ingredient not in tau:
-                tau[ingredient] = list()
-            tau[ingredient].append(row['title'])
+            if ingredient not in Ing_Rec:
+                Ing_Rec[ingredient] = list()
+            Ing_Rec[ingredient].append(row['title'])
             count += 1
-        sigma[row['title']] = count
+        Rec_Tot[row['title']] = count
 
 
-user_ing = ['Pasta', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Salt', 'Pepper', 'Cabbage Leaves']
-phi = {}
+user_ing = ['Pasta', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Salt', 'Pepper', 'Cabbage Leaves'] # Testing list
+Rec_Num = {} # Maps recipes to the number of ingredients the user has
 
-for ing in user_ing:
-    for recipe in tau[ing]:
-        if recipe not in phi:
-            phi[recipe] = 1
+for ingredient in user_ing:
+    for recipe in Ing_Rec[ingredient]:
+        if recipe not in Rec_Num:
+            Rec_Num[recipe] = 1
         else:
-            phi[recipe] += 1
+            Rec_Num[recipe] += 1
 
 
-pi = {}
+Rat_Rec = {} # Maps rating of recipe to recipes
 
-for recipe in phi.keys():
-    rating = phi[recipe] / sigma[recipe]
-    if rating not in pi:
-        pi[rating] = list()
-    pi[rating].append(recipe)
+for recipe in Rec_Num.keys():
+    rating = Rec_Num[recipe] / Rec_Tot[recipe]
+    if rating not in Rat_Rec:
+        Rat_Rec[rating] = list()
+    Rat_Rec[rating].append(recipe)
 
 
-keys = sorted(pi.keys(), reverse=True)
+keys = sorted(Rat_Rec.keys(), reverse=True)
 
 for key in keys:
-    print(key, pi[key])
+    print(key, Rat_Rec[key])
 
-
-# print(list(tau.items())[:5])
-# print(list(sigma.items())[:5])
