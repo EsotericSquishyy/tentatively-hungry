@@ -19,7 +19,7 @@ for unit in [
     ['cup', ''],
     ['ounce', 'oz'],
     ['pinch', ''],
-    ['fluid ounce', 'floz'],
+    ['fluid ounce', 'fl oz'],
     ['package', 'pkg'],
     ['can', ''],
     ['container', '']
@@ -33,6 +33,13 @@ class Ingredient:
     unit: str
     food_item: str
     mod: str
+
+
+@dataclass
+class Recipe:
+    name: str
+    ingredients: list[Ingredient]
+    instructions: str
 
 
 def clean_ingredient(ingredient: str) -> Ingredient:
@@ -51,11 +58,20 @@ def clean_ingredient(ingredient: str) -> Ingredient:
                 ingredient_unit = unit
                 food_item = cleaned[(cleaned.rfind(term) + len(term) + 1):].lstrip()
 
+    mod = ''
+    if ', ' in food_item:
+        comma_split = food_item.split(', ')
+        mod = ' '.join(comma_split[1:])
+        food_item = comma_split[0]
+
+    if '(' in food_item:
+        food_item = food_item[:food_item.find(' (')]
+
     quantity = ''
     if m := re.match(r'\d+\s*\d*/*\d*', cleaned):
         quantity = m.group(0).rstrip()
 
-    return Ingredient(quantity, ingredient_unit, food_item, '')
+    return Ingredient(quantity, ingredient_unit, food_item, mod)
 
 
 # Read data from the JSON file
@@ -72,10 +88,6 @@ df = df.drop(["picture_link"], axis=1)
 # Reset the index, rename columns, and remove redundant index column
 df = df.reset_index().rename(columns={"index": "ID"}).drop(columns=["ID"])
 
-# Assign ascending sequence numbers to the "ID" column starting at 1
-# df["ID"] = range(1, len(df) + 1)
-
-
 for i, ingredient_list in df[['ingredients']].iterrows():
     ingredients = []
     for item in ingredient_list.iloc[0]:
@@ -87,6 +99,13 @@ for i, ingredient_list in df[['ingredients']].iterrows():
     df.at[i, 'ingredients'] = ingredients
 
 
+for i, instructions in df[['instructions']].iterrows():
+    df.at[i, 'instructions'] = instructions.iloc[0].replace('\n', ' ')
+
 # Export the DataFrame to a new CSV file
 output_file_path = "output_dataframe.csv"
-df.to_csv(output_file_path, index=True)
+print(f"Wrote to {output_file_path}")
+
+# Assign ascending sequence numbers to the "ID" column starting at 1
+df.insert(0, "ID", range(1, len(df) + 1))
+df.to_csv(output_file_path, index=False)
